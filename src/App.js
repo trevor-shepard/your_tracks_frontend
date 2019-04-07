@@ -7,13 +7,10 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import './App.css';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:8000/',
-  headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
-});
+import * as ApiUtil from './util/api_utils'
 
-instance.defaults.xsrfCookieName = 'csrftoken'
-instance.defaults.xsrfHeaderName = 'X-CSRFToken'
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 
 class App extends Component {
@@ -43,11 +40,13 @@ class App extends Component {
   }
 
   test() {
-    instance.get('api/history', {
-      params: {
-        'username': this.state.username
-      }
+    ApiUtil.request_user_stats(5)
+    .then(res => {
+      debugger
     })
+    .catch(err => {
+      console.log(err.message)
+    }) 
   }
 
   handle_login = (e, data) => {
@@ -62,7 +61,6 @@ class App extends Component {
       .then(res => res.json())
       .then(json => {
         localStorage.setItem('token', json.token);
-        debugger
         this.setState({
           logged_in: true,
           displayed_form: '',
