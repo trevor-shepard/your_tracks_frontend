@@ -6,12 +6,12 @@ import configureStore from './store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import * as ApiUtil from './util/api_utils';
-
-window.request_user_stats = ApiUtil.request_user_stats
 
 document.addEventListener('DOMContentLoaded', () => {
     const store = configureStore()
+
+    window.getState = store.getState
+    window.dispatch = store.dispatch
 
     ReactDOM.render(<App store={ store } />, document.getElementById('root'));
 })
