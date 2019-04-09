@@ -28,15 +28,18 @@ export const clearSessionErrors = () => ({
 // Thunk Actions
 export const login = (user) => dispatch => (
     SessionApiUtil.login(user)
+    .then(res => res.json())
     .then(
-        (response) => dispatch(receiveCurrentUser(response)),
+        (response) => {
+            localStorage.setItem('token', response.token)
+            return dispatch(receiveCurrentUser(response))
+        },
         (response) => dispatch(receiveSessionErrors(response.responseJSON))
         )
 );
 
 export const logout = () => dispatch => {
     localStorage.removeItem('token');
-
     return dispatch(logoutCurrentUser())
 };
 

@@ -26,11 +26,6 @@ export const signup = (data) => {
   })
 };
 
-export const logout = () => {
-  localStorage.removeItem('token');
-};
-
-
 export const request_user_stats = (days) => {
   const instance = axios.create({
     baseURL: 'http://localhost:8000/',
