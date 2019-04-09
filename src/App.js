@@ -1,6 +1,8 @@
 
 import React from 'react';
-import { Switch, HashRouter, Route } from 'react-router-dom'
+import { Switch, HashRouter} from 'react-router-dom'
+import { AuthRoute, ProtectedRoute } from './util/route_util'
+
 
 import { Provider } from 'react-redux'
 
@@ -15,9 +17,9 @@ const App = ({ store }) => (
     <HashRouter>
       <Nav />
       <Switch>
-        <Route exact path='/login' component = {LoginForm} />
-        <Route exact path='/signup' component = {SignupForm} />
-        <Route path='/' component = {Splash} />
+        <AuthRoute exact path='/login' component = {LoginForm} />
+        <ProtectedRoute exact path='/signup' component = {SignupForm} />
+        <ProtectedRoute path='/' component = {Splash} />
       </Switch>
     </HashRouter>
   </Provider>

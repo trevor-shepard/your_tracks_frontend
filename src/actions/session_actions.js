@@ -41,12 +41,16 @@ export const login = (user) => dispatch => (
 export const logout = () => dispatch => {
     localStorage.removeItem('token');
     return dispatch(logoutCurrentUser())
-};
+}
 
 export const signup = (user) => dispatch => (
     SessionApiUtil.signup(user)
+    .then(res => res.json())
     .then(
-        (response) => dispatch(receiveCurrentUser(response)),
+        (response) => {
+            localStorage.setItem('token', response.token)
+            dispatch(receiveCurrentUser(response))
+        },
         (response) => dispatch(receiveSessionErrors(response.responseJSON))
     )
 );

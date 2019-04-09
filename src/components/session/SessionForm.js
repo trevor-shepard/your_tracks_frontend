@@ -9,6 +9,10 @@ class SessionForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.current_user) this.props.logout()
+  }
+
   handleChange(event) {
     return this.setState({[event.target.name]: event.target.value});
   };
