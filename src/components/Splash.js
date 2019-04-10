@@ -1,13 +1,20 @@
 import React from 'react'
 
+import TrackDataIndex from './TrackDataIndex'
+
 class Splash extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
             days: 5,
+            
         };
         this.requestCurrentUserStats = this.requestCurrentUserStats.bind(this);
         this.handleChange = this.handleChange.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.requestCurrentUserTrackCounts(5)
     }
 
     requestCurrentUserStats(e) {
@@ -20,6 +27,12 @@ class Splash extends React.Component {
       };
 
     render() {
+        let track_index
+        
+        if (this.props.track_data) {
+            track_index = <TrackDataIndex track_data={this.props.track_data} />
+        }
+
         return (
             <div>
                 <h1>Welcome to YourTracks</h1>
@@ -30,6 +43,7 @@ class Splash extends React.Component {
                 onChange={this.handleChange}
                 />
                 <button onClick={this.requestCurrentUserStats} value="Request" >Request</button>
+                {track_index}
             </div>
         )
     }

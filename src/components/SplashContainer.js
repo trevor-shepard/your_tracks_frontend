@@ -5,7 +5,8 @@ import Splash from './Splash';
 import { requestCurrentUserTrackCounts } from '../actions/user_actions' 
 
 const mSTP = (state) => ({
-    current_user: state.session
+    current_user: state.session,
+    track_data: state.entities.user.track_data
 });
 
 const mDTP = () =>  dispatch => ({
