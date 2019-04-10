@@ -18,7 +18,7 @@ const App = ({ store }) => (
       <Nav />
       <Switch>
         <AuthRoute exact path='/login' component = {LoginForm} />
-        <ProtectedRoute exact path='/signup' component = {SignupForm} />
+        <AuthRoute exact path='/signup' component = {SignupForm} />
         <ProtectedRoute path='/' component = {Splash} />
       </Switch>
     </HashRouter>

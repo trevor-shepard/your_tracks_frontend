@@ -21,8 +21,8 @@ function Nav(props) {
   } else {
     return (
       <ul>
-        <li onClick={display_form('login')}>login</li>
-        <li onClick={display_form('signup')}>signup</li>
+        <li onClick={display_form('/login')}>login</li>
+        <li onClick={display_form('/signup')}>signup</li>
       </ul>
     );
   }
