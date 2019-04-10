@@ -5,7 +5,7 @@ const tracksReducer = (state=false, action) => {
 
     switch(action.type) {
         case RECIEVE_USER_TRACKS:
-            return action.tracks;
+            return action.track_data;
         default:
             return state;
     }

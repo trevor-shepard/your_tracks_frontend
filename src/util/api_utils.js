@@ -31,9 +31,7 @@ export const request_user_stats = (days) => {
     baseURL: 'http://localhost:8000/',
     headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
   });
-  const url = `api/stats/?days=${days}`
-  console.log(url)
-  return instance.get(url)
+  return instance.get(`api/stats/?days=${days}`)
 }
 
 export const request_history = () => {
