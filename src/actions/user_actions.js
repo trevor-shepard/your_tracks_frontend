@@ -21,5 +21,5 @@ export const clearUserTracks = () => ({
 
 export const requestCurrentUserTrackCounts = (days) => dispatch => {
     ApiUtil.request_user_stats(days)
-    .then((resp) => dispatch(recieveUserTrackCounts(resp.data.track_data)))
+    .then((resp) => {dispatch(recieveUserTrackCounts(resp.data.track_data))})
 }
