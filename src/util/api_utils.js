@@ -37,7 +37,7 @@ export const request_user_stats = (days) => {
 export const request_history = () => {
   const instance = axios.create({
     baseURL: 'http://localhost:8000/',
-    headers: {'Authorization': `JWT ${localStorage.getItem('token')}`}
+    headers: { 'Authorization': `JWT ${localStorage.getItem('token')}` }
   });
   
   instance.get('api/history', {

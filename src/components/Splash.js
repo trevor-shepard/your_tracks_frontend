@@ -28,7 +28,7 @@ class Splash extends React.Component {
 
     render() {
         let track_index
-        
+        console.log(this.props)
         if (this.props.track_data) {
             track_index = <TrackDataIndex track_data={this.props.track_data} />
         }
@@ -43,7 +43,7 @@ class Splash extends React.Component {
                 onChange={this.handleChange}
                 />
                 <button onClick={this.requestCurrentUserStats} value="Request" >Request</button>
-                {track_index}
+                { track_index }
             </div>
         )
     }

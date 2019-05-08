@@ -3,13 +3,12 @@ import React from 'react';
 
 
 
-const TrackDataDisplay = ({track_data}) => {
-    const title = track_data[0]
-    const value = track_data[1]
+const TrackDataDisplay = ({ track_data }) => {
+    
     return (
-        <div className="track-display">
-            <div className="track-title">{title}</div>
-            <div className="play-count">{value}</div>
+        <div>
+            <div>{ track_data.track.name } by { track_data.track.artist[0].name }</div>
+            <div>{ track_data.count }</div>
         </div>
     )
 };

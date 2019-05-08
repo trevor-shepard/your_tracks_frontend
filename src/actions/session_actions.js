@@ -31,8 +31,13 @@ export const login = (user) => dispatch => (
     .then(res => res.json())
     .then(
         (response) => {
+            debugger
             localStorage.setItem('token', response.token)
-            return dispatch(receiveCurrentUser(response))
+            const currentUser = {
+                token: response.token,
+                username: response.user.username
+            }
+            return dispatch(receiveCurrentUser(currentUser))
         },
         (response) => dispatch(receiveSessionErrors(response.responseJSON))
         )
@@ -48,7 +53,9 @@ export const signup = (user) => dispatch => (
     .then(res => res.json())
     .then(
         (response) => {
+            
             localStorage.setItem('token', response.token)
+
             dispatch(receiveCurrentUser(response))
         },
         (response) => dispatch(receiveSessionErrors(response.responseJSON))
