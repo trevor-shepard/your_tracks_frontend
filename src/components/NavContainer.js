@@ -5,7 +5,8 @@ import Nav from './Nav';
 import { logout } from '../actions/session_actions'
 
 const mSTP = (state) => ({
-    current_user: state.session
+    currentUser: state.session.currentUser,
+    logged_in: Boolean(state.session.token)
 })
 
 const mDTP = () => dispatch => ({

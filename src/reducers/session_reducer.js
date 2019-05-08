@@ -1,17 +1,13 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { combineReducers } from 'redux';
+
+import currentUserReducer from './current_user_reducer'
+import tokenReducer from './token_reducer'
 
 
-const sessionReducer= (state=false, action) => {
-    Object.freeze(state)
-
-    switch(action.type) {
-        case RECEIVE_CURRENT_USER:
-            return action.currentUser
-        case LOGOUT_CURRENT_USER:
-            return false;
-        default:
-            return state;
-    }
-};
+const sessionReducer = combineReducers({
+   currentUser: currentUserReducer,
+   token: tokenReducer
+});
 
 export default sessionReducer;
+ 

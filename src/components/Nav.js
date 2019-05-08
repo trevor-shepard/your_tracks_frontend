@@ -3,18 +3,17 @@ import React from 'react';
 
 function Nav(props) {
 
-  const logged_in = props.current_user
-
+  
   const display_form = (url) => {
     return () => {
       props.history.push(url)
     }
   };
 
-  if (logged_in) {
+  if (props.logged_in) {
     return (
       <ul>
-        <li>{props.current_user.user.username}</li>
+        <li>{props.currentUser.username}</li>
         <li onClick={props.logout}>logout</li>
       </ul>
     )
